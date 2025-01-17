@@ -30,6 +30,8 @@ function printWelcomeMessage() {
     console.log("程序即将开始运行...\n");
 }
 
+//创作不易，如果你想删除上面的打印信息，请在发布的时候提及作者 @chaozuoye ，我会很乐意帮助你传播！！！
+
 // 格式化时间为 YYYY-MM-DD HH:mm:ss
 function getCurrentTime() {
     const now = new Date();
