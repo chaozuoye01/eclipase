@@ -31,7 +31,7 @@ function printWelcomeMessage() {
     console.log("程序即将开始运行...\n");
 }
 
-##如果你想删除上述署名信息，请@作者 x.com/chaozuoye ，我会很开心并帮助你宣传！！！
+//如果你想删除上述署名信息，请@作者 x.com/chaozuoye ，我会很开心并帮助你宣传！！！
 
 // 格式化时间为 YYYY-MM-DD HH:mm:ss
 function getCurrentTime() {
