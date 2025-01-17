@@ -1,16 +1,15 @@
-//版权所有 (c) 2025 [作业借你抄 @chaozuoye ]
-//推特主页连接： x.com/chaozuoye
+// 版权所有 (c) 2025 [作业借你抄 @chaozuoye]
+// 推特主页连接： https://x.com/chaozuoye
 //
-//本代码基于 MIT 许可证开源发布。
-//您可以自由使用、复制、修改、合并、发布、分发、再许可和/或销售本代码的副本，
-//但须遵守以下条件：
+// 本代码基于 MIT 许可证开源发布。
+// 您可以自由使用、复制、修改、合并、发布、分发、再许可和/或销售本代码的副本，
+// 但须遵守以下条件：
 //
-//1. 在任何分发或衍生作品中，必须明确提及原作者 ([作业借你抄) 并给予适当的署名。
-//2. 在分发代码或衍生作品时，必须包含本许可的完整内容。
-//
-//本代码按“现状”提供，不附带任何明示或暗示的担保，包括但不限于
-//对特定用途的适用性或适销性的担保。
-
+// 1. 在任何分发或衍生作品中，必须明确提及原作者 ([作业借你抄) 并给予适当的署名。
+// 2. 在分发代码或衍生作品时，必须包含本许可的完整内容。
+// 
+// 本代码按“现状”提供，不附带任何明示或暗示的担保，包括但不限于
+// 对特定用途的适用性或适销性的担保。
 
 // 配置项
 const maxClicks = 10000; // 总最大点击次数
@@ -20,8 +19,8 @@ const clickDurationRange = [600, 1200]; // 每次点击的持续时间范围（�
 const pauseDurationRange = [600, 1800]; // 点击暂停时间范围（秒）
 
 // 全局变量
-let isRunning = true; // 全局开关
 let clickCount = 0; // 当前点击次数
+let isRunning = true; // 控制程序是否继续运行
 
 // 打印欢迎信息
 function printWelcomeMessage() {
@@ -30,8 +29,6 @@ function printWelcomeMessage() {
     console.log("主页链接欢迎关注: https://x.com/chaozuoye");
     console.log("程序即将开始运行...\n");
 }
-
-//如果你想删除上述署名信息，请@作者 x.com/chaozuoye ，我会很开心并帮助你宣传！！！
 
 // 格式化时间为 YYYY-MM-DD HH:mm:ss
 function getCurrentTime() {
@@ -54,7 +51,7 @@ function getRandomTime(range) {
 // 随机点击函数
 function randomCenterLeftClick() {
     // 检查是否需要停止运行
-    if (!isRunning || clickCount >= maxClicks) {
+    if (clickCount >= maxClicks) {
         console.log("到达最大点击次数，程序已停止运行。");
         return;
     }
@@ -63,14 +60,14 @@ function randomCenterLeftClick() {
     const screenWidth = window.innerWidth || document.documentElement.clientWidth;
     const screenHeight = window.innerHeight || document.documentElement.clientHeight;
 
-    // 定义中间偏左10%区域
-    const marginRatio = 0.1; // 边距比例（10%）
+    // 定义中间偏左3%区域
+    const marginRatio = 0.03; // 边距比例（3%）
     const minX = screenWidth * marginRatio; // 左边距
     const maxX = screenWidth * 0.5; // 中间线
     const minY = screenHeight * marginRatio; // 上边距
     const maxY = screenHeight * (1 - marginRatio); // 下边距
 
-    // 随机生成点击位置（中间偏左10%区域内）
+    // 随机生成点击位置（中间偏左3%区域内）
     const randomX = () => Math.floor(minX + Math.random() * (maxX - minX));
     const randomY = () => Math.floor(minY + Math.random() * (maxY - minY));
     const x = randomX();
@@ -97,23 +94,18 @@ function randomCenterLeftClick() {
     console.log(
         `点击位置: (${x}, ${y}), 当前点击次数: ${clickCount}, 当前时间: ${currentFormattedTime}`
     );
-
-    // 安排下一次点击
-    const delay = minDelay + Math.random() * (maxDelay - minDelay);
-    setTimeout(randomCenterLeftClick, delay);
 }
 
-// 主程序：运行点击
+// 启动点击并循环
 function startClicking() {
-    console.log("程序开始运行...");
-
-    // 每次点击持续的随机时间（毫秒）
+    // 每次点击持续的随机时间（秒）
     const clickDuration = getRandomTime(clickDurationRange) * 1000;
 
+    // 执行点击
     function runClicking() {
         const startTime = Date.now();
 
-        // 持续点击逻辑
+        // 持续点击
         const intervalId = setInterval(() => {
             const elapsedTime = Date.now() - startTime;
 
@@ -150,5 +142,5 @@ function stopClicking() {
 }
 
 // 启动程序
-printWelcomeMessage(); // 打印推特信息
+printWelcomeMessage();
 startClicking();
