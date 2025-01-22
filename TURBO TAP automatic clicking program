@@ -30,8 +30,6 @@ function printWelcomeMessage() {
     console.log("程序即将开始运行...\n");
 }
 
-//创作不易，如果你想删除上面的打印信息，请在发布的时候提及作者 @chaozuoye ，我会很乐意帮助你传播！！！
-
 // 格式化时间为 YYYY-MM-DD HH:mm:ss
 function getCurrentTime() {
     const now = new Date();
@@ -62,14 +60,15 @@ function randomCenterLeftClick() {
     const screenWidth = window.innerWidth || document.documentElement.clientWidth;
     const screenHeight = window.innerHeight || document.documentElement.clientHeight;
 
-    // 定义中间偏左3%区域
-    const marginRatio = 0.03; // 边距比例（3%）
-    const minX = screenWidth * marginRatio; // 左边距
-    const maxX = screenWidth * 0.5; // 中间线
+    // 定义中间偏左 2% 区域并向左偏移 20%
+    const marginRatio = 0.02; // 区域比例（2%）
+    const leftOffset = 0.2; // 左偏移比例（20%）
+    const minX = screenWidth * leftOffset; // 起始点向左偏移 20%
+    const maxX = screenWidth * (leftOffset + marginRatio); // 起始点偏移 20%，宽度占 2%
     const minY = screenHeight * marginRatio; // 上边距
     const maxY = screenHeight * (1 - marginRatio); // 下边距
 
-    // 随机生成点击位置（中间偏左3%区域内）
+    // 随机生成点击位置（中间偏左 2% 区域内）
     const randomX = () => Math.floor(minX + Math.random() * (maxX - minX));
     const randomY = () => Math.floor(minY + Math.random() * (maxY - minY));
     const x = randomX();
