@@ -12,9 +12,9 @@
 // 对特定用途的适用性或适销性的担保。
 
 // 配置项
-const maxClicks = 10000; // 总最大点击次数
-const minDelay = 1000; // 每次点击的最小延迟（毫秒）
-const maxDelay = 3000; // 每次点击的最大延迟（毫秒）
+const maxClicks = 100000; // 总最大点击次数
+const minDelay = 500; // 每次点击的最小延迟（毫秒）
+const maxDelay = 1500; // 每次点击的最大延迟（毫秒）
 const clickDurationRange = [600, 1200]; // 每次点击的持续时间范围（秒）
 const pauseDurationRange = [600, 1800]; // 点击暂停时间范围（秒）
 
